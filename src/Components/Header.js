@@ -17,9 +17,9 @@ const Header = () => {
     if(searchInput){
       navigate(`/search?q=${searchInput}`)
     }
-    // else{
-    //   navigate('/')
-    // }
+    else{
+      navigate('/')
+    }
   },[searchInput])
 
   const handleSubmit =(e) =>{
