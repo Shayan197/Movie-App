@@ -8,8 +8,15 @@ import axios from 'axios';
 import { Provider } from 'react-redux';
 import Store from './Store/Store';
 
-axios.defaults.baseURL = "https://api.themoviedb.org/3/"
-axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`
+axios.defaults.baseURL = "https://api.themoviedb.org/3/";
+
+const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
+
+if (accessToken) {
+  axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+} else {
+  console.error("🔴 TMDB access token is missing! Check environment variables.");
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
